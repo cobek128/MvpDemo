@@ -5,5 +5,9 @@
     <string name="get_success_data">获取数据【成功】</string>
     <string name="get_failure_data">获取数据【失败】</string>
     <string name="get_error_data">获取数据【异常】</string>
+    <string name="api_error_msg">请求数据失败</string>
+    <string name="api_success_msg">请求数据成功</string>
+    <string name="api_loading_data">正在加载数据</string>
+    <string name="api_get_error_data">由于网络、缺少权限等原因，数据请求失败</string>
 
 </resources>

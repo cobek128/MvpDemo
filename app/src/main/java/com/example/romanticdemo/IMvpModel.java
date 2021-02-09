@@ -1,11 +1,11 @@
 package com.example.romanticdemo;
 
-public interface IMvpModel {
+public interface IMvpModel <T> {
     /**
      * 数据请求成功
      * @param data  请求的数据
      */
-    void onSuccess(String data);
+    void onSuccess(T data);
 
     /**
      * 由于msg原因，数据请求失败

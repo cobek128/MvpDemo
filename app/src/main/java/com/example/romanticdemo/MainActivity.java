@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements MvpView {
-    // 进度条
-    ProgressDialog progressDialog;
+import com.example.romanticdemo.base.BaseActivity;
+
+public class MainActivity extends BaseActivity implements MvpView {
     TextView text;
     MvpPresenter mvpPresenter;
 
@@ -20,10 +20,14 @@ public class MainActivity extends AppCompatActivity implements MvpView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         text = (TextView) findViewById(R.id.text);
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("正在加载数据");
-        mvpPresenter = new MvpPresenter(this);
+        mvpPresenter = new MvpPresenter(getContext());
+        mvpPresenter.attachView(this);      // 绑定view
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mvpPresenter.unAttachView();    // 解绑view
     }
 
     public void getData(View view) {
@@ -39,34 +43,8 @@ public class MainActivity extends AppCompatActivity implements MvpView {
     }
 
     @Override
-    public void showLoading() {
-        if (!progressDialog.isShowing()) {
-            progressDialog.show();
-        }
-    }
-
-    @Override
-    public void hideLoading() {
-        if (progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
-    }
-
-    @Override
     public void showData(String data) {
-        Toast.makeText(this, "请求数据成功", Toast.LENGTH_SHORT).show();
+        showToast(getResources().getString(R.string.api_success_msg));
         text.setText(data);
-    }
-
-    @Override
-    public void showFailureMsg(String msg) {
-        Toast.makeText(this, "请求数据失败", Toast.LENGTH_SHORT).show();
-        text.setText(msg);
-    }
-
-    @Override
-    public void showErrorMsg() {
-        Toast.makeText(this, "请求数据异常", Toast.LENGTH_SHORT).show();
-        text.setText("数据请求异常，可能是由于网络差、没有权限等原因");
     }
 }

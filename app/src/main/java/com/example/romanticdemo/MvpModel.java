@@ -6,9 +6,9 @@ public class MvpModel {
     /**
      * 获取网络数据
      * @param params
-     * @param iMvpModel
      */
-    public static void getNetData(final String params, final IMvpModel iMvpModel) {
+    public static void getNetData(final String params, final IMvpModel<String> iMvpModel) {
+        // 利用postDelayed方法模拟网络请求数据的耗时操作
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
