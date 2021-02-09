@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RomanticDemo</string>
+    <string name="search_pai">索派</string>
+    <string name="get_net_data">点击按钮获取网络数据</string>
+    <string name="get_success_data">获取数据【成功】</string>
+    <string name="get_failure_data">获取数据【失败】</string>
+    <string name="get_error_data">获取数据【异常】</string>
+
+</resources>
