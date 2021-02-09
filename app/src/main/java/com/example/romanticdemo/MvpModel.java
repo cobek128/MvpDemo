@@ -25,6 +25,6 @@ public class MvpModel {
                 }
                 iMvpModel.onComplete();
             }
-        }, 5000);
+        }, 1000);
     }
 }
